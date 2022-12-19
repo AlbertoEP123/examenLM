@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgba(212, 186, 247, 0.336);
+}
+
+img {
+   /*Al ser la primera capa y la principal, le asigno la 0*/
+   z-index:0;
+    /*Le asigno la posicion que quiero estrictamente, por eso uso absolute y indico su tamaño*/
+    position:absolute; 
+    width:100%;
+    height:100%;
+    /*Para que la imagen ocupa toda la pantalla*/
+    object-fit: cover;
+    object-position: 50% 20%;
+    transition: all 1.5s linear;
+   
+}
+
+div {
+   /*Como queremos que la capa se vea encima de la img, le ponemos 1 ya que img tiene el 0*/
+   z-index:1;
+    /*Le asigno la posición al div, y tamaño que ocupa (100%)*/
+    position:absolute;
+    top:0%;
+    left:0%;
+    width: 100%;
+    height: 100%;
+    /*En principio hasta que no se active el hover, la opacidad seria 0*/
+    opacity:0;
+    /*Como quiero que los p se vean en vertical, de arriba abajo uso flex y direction column*/
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    transition: all 1.5s ease-in;
+    background-color:transparent;
+
+    
+}
+div:active, div:hover {
+    /*Que sea visible cuando pase el raton*/
+    background-color:rgba(255,255,255,0.15);
+    opacity:1;
+    
+    
+}
+p {
+    z-index:2;
+    text-align:center;
+    
+    color:rgb(112, 152, 238);
+    text-shadow:1px 1px rgba(201, 139, 236, 0.514);
+    font-size:calc(1.2em + 1vw + 1vh);
+    font-weight:bold;
+    
+    transition: all 3s ease-in-out;
+}
+p:active{
+    color: blueviolet;
+    font-size: 50px;
+    border-color: rgba(255, 0, 0, 0.575);
+    border: solid 2px;
+    border-radius: 5%;
+    border-style: dashed;
+    font-family: cursive;
+    writing-mode: inherit;
+}
+
+@media all and (orientation:landscape){
+    img, div {
+        width:80vh;
+        margin-left:calc(50vw - 35vh);
+    }
+}
